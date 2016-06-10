@@ -8,7 +8,8 @@
     <h1>Individual Movie Page</h1>
 
     {% for movie in movies %}
-        <h3>{{ movie }}</h3>
+        <h3>{{ movie.movie_id }} {{ movie }} {{ movie.release_date }}</h3>
     {% endfor %}
+
 </body>
 </html>
