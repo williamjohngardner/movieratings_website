@@ -16,16 +16,17 @@ def new_rating(request):
 
 
 def movie_page(request, movie_id):
-    movies = {"movies": list(Movie.objects.all())}
-    raters = {"raters": list(Rater.objects.all())}
-    ratings = {"ratings": list(Rating.objects.all())}
+    movies_dict = {"movies": list(Movie.objects.all()),
+                   "raters": list(Rater.objects.all(user_id=movie_id)),
+                   "ratings": list(Rating.objects.all())}
 
-    return render(request, "movie_page.html", movies)
+    return render(request, "movie_page.html", movies_dict)
 
 
 def rater_page(request, rater_id):
-    rater_dict = {"rater": Rater.objects.get(id=rater_id)}
-    # movies = {"movies": list(Movie.objects.all())}
+    rater_dict = {"rater": list(Rater.objects.get(id=rater_id)),
+                  "ratings": list(Rating.objects.filter(rater_id=rater_id)),
+                  "movies": list(Movie.objects.all())}
 
     return render(request, "rater_page.html", rater_dict)
 

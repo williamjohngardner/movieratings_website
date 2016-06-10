@@ -11,5 +11,10 @@
     <li>Gender: {{ rater.gender }}</li>
     <li>Occupation: {{ rater.occupation }}</li>
     <li>Zip Code: {{ rater.zip_code }}</li>
+
+    {% for rating in ratings %}
+        <div>ID:{{ rating.movie_id }}</div>
+        <div>{{ rating.rating }}</div>
+    {% endfor %}
 </body>
 </html>
