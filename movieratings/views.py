@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from movieratings.models import Movie
+
+
+def index_page(request):
+    movies = {"movies": list(Movie.objects.all())}
+    return render(request, "index.html", movies)
 
 
 def top_twenty(request):
@@ -10,7 +16,8 @@ def new_rating(request):
 
 
 def movie_page(request):
-    pass
+    movies = {"movies": list(Movie.objects.all())}
+    return render(request, "movie_page.html", movies)
 
 
 def rater_page(request):
