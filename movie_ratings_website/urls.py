@@ -20,9 +20,9 @@ from movieratings.views import top_twenty, new_rating, movie_page, rater_page, i
 urlpatterns = [
     url(r'^admin/$', admin.site.urls),
     url(r'^$', index_page),
-    url(r'^/top20/$', top_twenty),
+    url(r'^top20/$', top_twenty),
     url(r'^newrating/$', new_rating),
-    url(r'^(?P<movie>\w+)/$', movie_page),
-    url(r'^(?P<rater>\w+)/$', rater_page)
+    url(r'^movies/$', movie_page),
+    url(r'^raters/$', rater_page)
 
 ]

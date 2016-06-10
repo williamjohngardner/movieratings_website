@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from movieratings.models import Movie
+from movieratings.models import Movie, Rater, Rating
 
 
 def index_page(request):
@@ -21,4 +21,5 @@ def movie_page(request):
 
 
 def rater_page(request):
-    pass
+    raters = {"raters": list(Rater.objects.all())}
+    return render(request, "rater_page.html", raters)
