@@ -28,3 +28,9 @@ def database(request):
 
     return render(request, "database_list.html", db_dict)
 
+
+def twenty(request):
+    xx_dict = {"ratings": Rating.objects.filter()}
+
+    return render(request, "twenty.html", xx_dict)
+
