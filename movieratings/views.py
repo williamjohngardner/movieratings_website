@@ -7,14 +7,6 @@ def index_page(request):
     return render(request, "index.html", movies)
 
 
-def top_twenty(request):
-    pass
-
-
-def new_rating(request):
-    pass
-
-
 def movie_page(request, movie_id):
     movies_dict = {"movies": list(Movie.objects.all()),
                    "raters": list(Rater.objects.all(user_id=movie_id)),
@@ -23,10 +15,10 @@ def movie_page(request, movie_id):
     return render(request, "movie_page.html", movies_dict)
 
 
-def rater_page(request, rater_id):
-    rater_dict = {"rater": list(Rater.objects.get(id=rater_id)),
-                  "ratings": list(Rating.objects.filter(rater_id=rater_id)),
-                  "movies": list(Movie.objects.all())}
+def rater_page(request, rater):
+    rater_dict = {"person": Rater.objects.filter(user_id=rater),
+                  "ratings": Rating.objects.filter(user_id=rater),
+                  "movies": Movie.objects.filter(movie_id=rater)}
 
     return render(request, "rater_page.html", rater_dict)
 

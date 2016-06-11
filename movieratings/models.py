@@ -43,12 +43,10 @@ class Rater(models.Model):
 
 
 class Rating(models.Model):
-    user_id = models.IntegerField()
-    item_id = models.IntegerField()
+    user_id = models.ForeignKey(Rater)
+    item_id = models.ForeignKey(Movie)
     rating = models.IntegerField()
     timestamp = models.IntegerField()
-    movie_id = models.ForeignKey(Movie)
-    rater_id = models.ForeignKey(Rater)
 
     def __str__(self):
         return str(self.rating)

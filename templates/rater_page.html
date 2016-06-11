@@ -6,15 +6,19 @@
 </head>
 <body>
     <h1>Individual Rater Page</h1>
-    <li>Rater ID: {{ rater.user_id }}</li>
-    <li>Age: {{ rater.age }}</li>
-    <li>Gender: {{ rater.gender }}</li>
-    <li>Occupation: {{ rater.occupation }}</li>
-    <li>Zip Code: {{ rater.zip_code }}</li>
-
+    {% for item in person %}
+    <li>Rater ID: {{ item.user_id }}</li>
+    <li>Age: {{ item.age }}</li>
+    <li>Gender: {{ item.gender }}</li>
+    <li>Occupation: {{ item.occupation }}</li>
+    <li>Zip Code: {{ item.zip_code }}</li>
+    {% endfor %}
+    <br>
+    <br>
+    <h2>Other Movies Rated by User{{ person. }}</h2>
     {% for rating in ratings %}
-        <div>ID:{{ rating.movie_id }}</div>
-        <div>{{ rating.rating }}</div>
+        <div>ID:{{ rating.item_id }}</div>
+        <div>Rating: {{ rating.rating }}</div><br>
     {% endfor %}
 </body>
 </html>
