@@ -30,7 +30,7 @@ def database(request):
 
 
 def twenty(request):
-    xx_dict = {"ratings": Rating.objects.filter()}
+    pass
 
-    return render(request, "twenty.html", xx_dict)
+    return render(request, "twenty.html")
 
