@@ -8,7 +8,7 @@ def index_page(request):
 
 
 def movie_page(request, movie):
-    movies_dict = {"person": Rater.objects.filter(user_id=movie),
+    movies_dict = {"people": Rater.objects.filter(user_id=movie),
                    "ratings": Rating.objects.filter(user_id=movie),
                    "movies": Movie.objects.filter(movie_id=movie)}
 

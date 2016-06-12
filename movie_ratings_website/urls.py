@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^$', index_page),
     url(r'^database/$', database),
     url(r'^twenty/$', twenty),
-    url(r'^movie/(?P<movie>\w+)/$', movie_page),
+    url(r'^movie/(?P<movie>\w+)/$', movie_page, 'movie'),
     url(r'^rater/(?P<rater>\w+)/$', rater_page)
 
 ]

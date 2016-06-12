@@ -8,13 +8,15 @@
     <h1>Individual Movie Page</h1>
 
     {% for movie in movies %}
-        <h3>{{ movie.movie_title }}</h3>
+        <a href="{{ movie.IMDb_URL }}"><h3>{{ movie.movie_title }}</h3></a>
     {% endfor %}
     <h3>Users Who Rated This Movie Also Rated:</h3>
+    {% for person in people %}
+        <div>User ID: {{ person.user_id }}</div>
+    {% endfor %}
     {% for rating in ratings %}
-        <div>{{ rating.user_id }}</div>
-        <div>{{ rating.item_id }}</div>
-        <div>{{ rating.rating }}</div>
+        <div><a href="">{{ rating.item_id }}</a></div>
+        <div>Rating: {{ rating.rating }}</div>
         <br>
     {% endfor %}
 
