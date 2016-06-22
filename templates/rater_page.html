@@ -3,16 +3,23 @@
 {% block content %}
     <h1>Individual Rater Page</h1>
         {% for item in person %}
-        <li>Rater ID: {{ item.user_id }}</li>
-        <li>Age: {{ item.age }}</li>
-        <li>Gender: {{ item.gender }}</li>
-        <li>Occupation: {{ item.occupation }}</li>
-        <li>Zip Code: {{ item.zip_code }}</li>
+        <h4><li>Rater ID: {{ item.id }}</li></h4>
+        <h4><li>Age: {{ item.age }}</li></h4>
+        <h4><li>Gender: {{ item.gender }}</li></h4>
+        <h4><li>Occupation: {{ item.occupation }}</li></h4>
+        <h4><li>Zip Code: {{ item.zip_code }}</li></h4>
         {% endfor %}
         <br>
         <h2>Other Movies Rated by This User: </h2>
+        <table class="table table-striped table-bordered">
+        <tr>
+            <th>Movie ID</th>
+            <th>Rating</th>
+        </tr>
         {% for rating in ratings %}
-            <div>Movie ID: <a href="{% url 'movie' rating.item_id %}">{{ rating.item_id }}</a></div>
-            <div>Rating: {{ rating.rating }}</div><br>
+        <tr>
+            <td>Movie ID: <a href="{% url 'movie' rating.item_id %}">{{ rating.item_id }}</a></td>
+            <td>Rating: {{ rating.rating }}</td>
+        </tr>
         {% endfor %}
 {% endblock %}

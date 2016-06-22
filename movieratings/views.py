@@ -36,7 +36,6 @@ def database(request):
 def twenty(request):
     context = {
         "top_20": AverageRating.objects.filter(count_ratings__gt=100).order_by("-average_rating")[:20],
-        "new_rating": new_rating()
     }
     return render(request, 'twenty.html', context)
 
