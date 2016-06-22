@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movie Page</title>
-</head>
-<body>
-    <h1>Individual Movie Page</h1>
+{% extends "base.html" %}
 
+{% block content %}
     {% for movie in movies %}
-        <a href="{{ movie.IMDb_URL }}"><h3>{{ movie.movie_title }}</h3></a>
-    {% endfor %}
-    <h3>Users Who Rated This Movie Also Rated:</h3>
-    {% for person in people %}
-        <div>User ID: {{ person.user_id }}</div>
-    {% endfor %}
-    {% for rating in ratings %}
-        <div><a href="">{{ rating.item_id }}</a></div>
-        <div>Rating: {{ rating.rating }}</div>
-        <br>
-    {% endfor %}
+        <h1>{{ movie.movie_title }}</h1>
 
-</body>
-</html>
+        <h3>Other Users' Ratings for: {{ movie.movie_title }}</h3>
+        {% endfor %}
+
+        {% for rating in ratings %}
+            <div>Rater ID: <a href="{% url 'rater' rating.user_id %}">{{ rating.user }}</a></div>
+            <div>Rating: {{ rating.rating }}</div>
+            <br>
+        {% endfor %}
+{% endblock %}

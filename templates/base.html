@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Movie Database</title>
+    <link rel="stylesheet" href="{% static 'movieratings/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="container">
+    {% block content %}
+        default
+    {% endblock %}
+</div>
+</body>
+</html>

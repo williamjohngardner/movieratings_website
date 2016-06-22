@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Top 20 Movies</title>
-</head>
-<body>
-    <h1>Top 20 Movies in Database</h1>
+{% extends "base.html" %}
 
-    <h2>{{ average }}</h2>
 
-</body>
-</html>
+{% block content %}
+<h1>Top 20 Movies in Database</h1>
+    {% for twenty in top_20 %}
+        <a href="{%  url 'movie' twenty.id %}">{{ twenty }}</a>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Rater Page</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <h1>Individual Rater Page</h1>
-    {% for item in person %}
-    <li>Rater ID: {{ item.user_id }}</li>
-    <li>Age: {{ item.age }}</li>
-    <li>Gender: {{ item.gender }}</li>
-    <li>Occupation: {{ item.occupation }}</li>
-    <li>Zip Code: {{ item.zip_code }}</li>
-    {% endfor %}
-    <br>
-    <br>
-    <h2>Other Movies Rated by User: </h2>
-    {% for rating in ratings %}
-        <div>ID: {{ rating.item_id }}</div>
-        <div>Rating: {{ rating.rating }}</div><br>
-    {% endfor %}
-</body>
-</html>
+        {% for item in person %}
+        <li>Rater ID: {{ item.user_id }}</li>
+        <li>Age: {{ item.age }}</li>
+        <li>Gender: {{ item.gender }}</li>
+        <li>Occupation: {{ item.occupation }}</li>
+        <li>Zip Code: {{ item.zip_code }}</li>
+        {% endfor %}
+        <br>
+        <h2>Other Movies Rated by This User: </h2>
+        {% for rating in ratings %}
+            <div>Movie ID: <a href="{% url 'movie' rating.item_id %}">{{ rating.item_id }}</a></div>
+            <div>Rating: {{ rating.rating }}</div><br>
+        {% endfor %}
+{% endblock %}

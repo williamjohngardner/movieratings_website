@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movie Database</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block content %}
 {% for movie in movies %}
-    <a href="{{ movie.IMDb_URL }}"><h3>{{ movie.movie_title }}</h3></a>
+    {{ movie.id }}: <a href="{% url 'movie' movie.id %}">{{ movie.movie_title }}</a>
+    <br>
 {% endfor %}
-
-</body>
-</html>
+{% endblock %}

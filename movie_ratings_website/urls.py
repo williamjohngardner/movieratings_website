@@ -18,11 +18,11 @@ from django.contrib import admin
 from movieratings.views import movie_page, rater_page, index_page, database, twenty
 
 urlpatterns = [
-    url(r'^admin/$', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^$', index_page),
-    url(r'^database/$', database),
-    url(r'^twenty/$', twenty),
-    url(r'^movie/(?P<movie>\w+)/$', movie_page, 'movie'),
-    url(r'^rater/(?P<rater>\w+)/$', rater_page)
+    url(r'^database/$', database, name="database"),
+    url(r'^twenty/$', twenty, name="twenty"),
+    url(r'^movie/(?P<movie>\d+)/$', movie_page, name="movie"),
+    url(r'^rater/(?P<rater>\w+)/$', rater_page, name="rater")
 
 ]

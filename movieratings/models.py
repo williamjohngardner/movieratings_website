@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Movie(models.Model):
-    movie_id = models.IntegerField()
     movie_title = models.CharField(max_length=60)
     release_date = models.CharField(max_length=15)
     video_release_date = models.CharField(max_length=10, default="")
@@ -32,19 +31,18 @@ class Movie(models.Model):
 
 
 class Rater(models.Model):
-    user_id = models.IntegerField()
     age = models.IntegerField()
     gender = models.CharField(max_length=1)
     occupation = models.CharField(max_length=30)
     zip_code = models.CharField(max_length=6)
 
     def __str__(self):
-        return str(self.user_id)
+        return str(self.id)
 
 
 class Rating(models.Model):
-    user_id = models.ForeignKey(Rater)
-    item_id = models.ForeignKey(Movie)
+    user = models.ForeignKey(Rater)
+    item = models.ForeignKey(Movie)
     rating = models.IntegerField()
     timestamp = models.IntegerField()
 
@@ -52,7 +50,10 @@ class Rating(models.Model):
         return str(self.rating)
 
 
-class Twenty(models.Model):
-    count_rating = models.IntegerField()
-    average_rating = models.FloatField()
+class AverageRating(models.Model):
     movie = models.ForeignKey(Movie)
+    count_ratings = models.IntegerField()
+    average_rating = models.DecimalField(max_digits=5, decimal_places=2)
+
+    def __str__(self):
+        return str(self.movie)
