@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Make a New Rating</title>
-</head>
-<body>
-    <h1>Make a New Movie Rating</h1>
+{% extends "base.html" %}
 
-
-</body>
-</html>
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <pre>{{ form.as_p }}</pre>
+        <input class="btn btn-primary" type="submit" value="Rate Movie!" >
+    </form>
+{% endblock %}

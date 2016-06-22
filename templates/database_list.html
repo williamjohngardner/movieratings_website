@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for movie in movies %}
-    {{ movie.id }}: <a href="{% url 'movie' movie.id %}">{{ movie.movie_title }}</a>
-    <br>
-{% endfor %}
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Movie Title</th>
+            <th>Rate This Movie?</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.id }}</td>
+            <td><a href="{% url 'movie' movie.id %}">{{ movie.movie_title }}</a></td>
+            <td><a class="btn btn-primary btn-xs" href="{% url 'new_rating' movie.id %}">Rate This Movie</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
